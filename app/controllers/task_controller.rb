@@ -9,9 +9,14 @@ class TaskController < ApplicationController
     render json: task
   end
 
+  def create
+    task = Task.create(task_params)
+    render json: task
+  end
+
   private
 
   def task_params
-    params.require(:task).permit(:done)
+    params.require(:task).permit(:done, :title)
   end
 end
